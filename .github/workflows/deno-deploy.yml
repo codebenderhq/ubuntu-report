@@ -56,7 +56,7 @@ jobs:
       - name: Upload to Deno Deploy
         uses: denoland/deployctl@v1
         with:
-          project: #project name
+          project: sauveurhq-ubuntu-report
           entrypoint: "server/index.js" # TODO(codebenderhq): update
           root: src
           

@@ -7,7 +7,7 @@ const port = 8080;
 
 
 export const handler = async (request) => {
-  console.log(Deno.env.get('DENO_ENV'))
+  // console.log(Deno.env.get('DENO_ENV'))
   return middleware(request, API, app)
 };
 
