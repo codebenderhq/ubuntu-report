@@ -1,0 +1,13 @@
+{
+    "tasks": {
+        "dev": "export $(cat .env | xargs) && cd ./src &&  deno run --watch --allow-net --allow-read --allow-env --allow-run ./server/index.js" ,
+        "serve":"npm run start",
+        "build":"npm run build",
+        "run": "deno task dev & deno task serve",
+        "run-prod": "deno task dev & deno task build",
+        "test": " deno task build && deno test ./qa --allow-run  --allow-net --allow-env --allow-read --import-map ./src/import_map.json ",
+        "api-bundle": "deno bundle --import-map ./src/import_map.json ./src/server/api/index.ts  ./src/server/static/api.js ",
+        "debug": "cd ./src  &&  deno run --allow-net --allow-read --allow-env --allow-run  --import-map ./import_map.json  --inspect  ./server/index.js",
+        "reload": "deno cache --import-map ./src/server/import_map.json --reload ./src/server/index.js"
+    }
+}

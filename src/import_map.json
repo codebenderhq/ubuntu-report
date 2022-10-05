@@ -1,0 +1,6 @@
+{
+    "imports": {
+      "faunadb": "https://cdn.skypack.dev/faunadb"
+    }
+  }
+

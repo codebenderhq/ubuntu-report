@@ -1,0 +1,14 @@
+node_modules
+.parcel-cache
+dist
+.npmrc
+.idea
+sandbox
+public
+.dfx
+target
+.env
+
+local_modules
+./src/static
+static

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{title}</title>
+    <meta name="description" content="{desc}" />
+    <link rel="icon" type="image/png" href="../assets/favicon.png">
+    <!-- have the manifest return from the server -->
+    <link rel="manifest" href="./app.webmanifest">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <meta property="og:title" content="{title}">
+    <meta property="og:description" content="The Dev House In Your Pocket, Allowing you to focus on business">
+    <meta property="og:image" content="../assets/background.png">
+    <meta property="og:url" content="https://sauveur.xyz">
+
+    <meta name="twitter:title" content="{title}">
+    <meta name="twitter:description" content="The Dev House In Your Pocket, Allowing you to focus on business">
+    <meta name="twitter:image" content="../assets/background.png">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <meta name="theme" content="{theme}"> 
+    <link rel="stylesheet" href="https://sauveur.xyz/api/blacklabel/css">
+    <script src="https://sauveur.xyz/api/blacklabel/js"></script>
+
+</head>
+<body>
+
+
+    <style>
+        /* wip to make this dynamic but for now use this to have a custom style sheet */
+        @import url('./index.css');
+    </style>
+
+<!-- <div id="root"></div> -->
+<div class="w-full h-full flex justify-center items-end">
+    {content}
+</div>
+
+
+
+</body>
+
+{script}
+
+<script type="module">
+
+    
+if (process.env.NODE_ENV !== 'development' && document.location.pathname === '/') {
+    if ('serviceWorker' in navigator) {
+    // https://developer.chrome.com/blog/pwa-manifest-id/
+    // https://developer.mozilla.org/en-US/docs/Web/API/Background_Synchronization_API
+   // https://parceljs.org/languages/javascript/#service-workers
+   // https://web.dev/learn/pwa/service-workers/
+//    https://web.dev/learn/pwa/update/
+   navigator.serviceWorker.register(new URL('./serviceworker.js', import.meta.url),
+  {type: 'module'});
+}
+    }
+</script>
+
+
+</html>

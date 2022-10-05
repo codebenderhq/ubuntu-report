@@ -1,0 +1,72 @@
+name: Deploy Bridge
+on: [push]
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Setup Deno
+        uses: denoland/setup-deno@v1
+        with:
+          deno-version: v1.x
+      - run: npm install
+      - run: npm run build
+      - run: deno task test
+
+  build:
+    name: Build
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - run: npm install
+      - run: npm run build
+
+  deploy:
+    name: Deploy
+    needs: test
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write # Needed for auth with Deno Deploy
+      contents: read # Needed to clone the repository
+
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Setup Deno
+        uses: denoland/setup-deno@v1
+        with:
+          deno-version: v1.x
+      - run: npm install
+      - run: npm run build
+
+      # TODO(codebenderhq): figure out how to pull the data from build to deploy
+
+      - name: Upload to Deno Deploy
+        uses: denoland/deployctl@v1
+        with:
+          project: #project name
+          entrypoint: "server/index.js" # TODO(codebenderhq): update
+          root: src
+          
+      
+      # - name: Make Request
+      #   id: myRequest
+      #   uses: fjogeleit/http-request-action@v1
+      #   with:
+      #     url: "https://bridge.sauveur.xyz/update"
+      #     customHeaders: '{"key":"123450"}'
+      
+      # - name: Show Response
+      #   run: echo ${{ steps.myRequest.outputs.response }}
