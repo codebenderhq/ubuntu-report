@@ -14,6 +14,7 @@ sdk.run("/", async () => {
     container.className = 'max-w-sm w-full h-full flex flex-col space-y-4'
     res.body.forEach(element => {
         const {title, image, desc} = element
+        console.log(desc)
         const id = title.replaceAll(' ', '-')
         const subContainer = document.createElement('div')
         subContainer.className = 'group flex relative h-80 p-2'
@@ -33,7 +34,7 @@ sdk.run("/", async () => {
         const descElement = document.createElement('p')
         descElement.className = 'w-full p-2 py-8 max-w-sm hidden group-hover:flex'
         descElement.id = id
-        descElement.innerHTML = desc
+        descElement.innerHTML = desc.replaceAll('\n','<br>')
         subContainer.appendChild(imgElement)
         subContainer.appendChild(descElement)
         container.appendChild(subContainer)
