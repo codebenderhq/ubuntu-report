@@ -47,17 +47,17 @@
 <script type="module">
 
     
-if (process.env.NODE_ENV !== 'development' && document.location.pathname === '/') {
-    if ('serviceWorker' in navigator) {
-    // https://developer.chrome.com/blog/pwa-manifest-id/
-    // https://developer.mozilla.org/en-US/docs/Web/API/Background_Synchronization_API
-   // https://parceljs.org/languages/javascript/#service-workers
-   // https://web.dev/learn/pwa/service-workers/
-//    https://web.dev/learn/pwa/update/
-   navigator.serviceWorker.register(new URL('./serviceworker.js', import.meta.url),
-  {type: 'module'});
-}
-    }
+// if (process.env.NODE_ENV !== 'development' && document.location.pathname === '/') {
+//     if ('serviceWorker' in navigator) {
+//     // https://developer.chrome.com/blog/pwa-manifest-id/
+//     // https://developer.mozilla.org/en-US/docs/Web/API/Background_Synchronization_API
+//    // https://parceljs.org/languages/javascript/#service-workers
+//    // https://web.dev/learn/pwa/service-workers/
+// //    https://web.dev/learn/pwa/update/
+//    navigator.serviceWorker.register(new URL('./serviceworker.js', import.meta.url),
+//   {type: 'module'});
+// }
+//     }
 </script>
 
 
