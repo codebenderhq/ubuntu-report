@@ -17,15 +17,7 @@ sdk.run("/", async () => {
         console.log(desc)
         const id = title.replaceAll(' ', '-')
         const subContainer = document.createElement('div')
-        subContainer.className = 'group flex relative h-80 p-2'
-        // subContainer.addEventListener('click', () => {
-        //     console.log(id)
-        //     if(location.href.includes(`#${id}`)){
-        //         location = '#'
-        //     }else{
-        //         location = `#${id}`
-        //     }
-        // })
+        subContainer.className = 'group flex relative h-80 p-2 hover:z-10'
         const imgElement = document.createElement('img')
         imgElement.src = image
         imgElement.className = 'group-hover:opacity-25 group-hover:absolute rounded'
